@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:orientation="vertical"
+    android:padding="5dip" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <android.gesture.GestureOverlayView
+            android:id="@+id/handwrite_gestureOverlayView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/handwrite_panel_bg"
+            android:gestureColor="#660000FF"
+            android:gestureStrokeAngleThreshold="0.0"
+            android:gestureStrokeLengthThreshold="0.0"
+            android:gestureStrokeSquarenessThreshold="0.0"
+            android:gestureStrokeType="multiple" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical" >
+
+            <com.lgy.view.LinearLayoutBackground
+                android:id="@+id/handwrite_close_btn_layout"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:textColor="#606065"
+                android:gravity="center"
+            	android:textSize="14sp" >
+            	
+                <ImageView
+	                android:layout_width="20dp"
+	                android:layout_height="20dp" 
+	                android:background="@drawable/handwrite_close_icon"/>
+                
+            </com.lgy.view.LinearLayoutBackground>
+
+            <com.lgy.view.TextViewBackground
+                android:id="@+id/handwrite_question_mark_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="？"
+                android:textColor="#606065"
+            	android:textSize="14sp" />
+
+            <com.lgy.view.TextViewBackground
+                android:id="@+id/handwrite_exclamatory_mark_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="！"
+                android:textColor="#606065"
+            	android:textSize="14sp" />
+
+            <com.lgy.view.TextViewBackground
+                android:id="@+id/handwrite_dou_mark_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="，"
+                android:textColor="#606065"
+            	android:textSize="14sp" />
+
+            <com.lgy.view.TextViewBackground
+                android:id="@+id/handwrite_period_mark_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="。"
+                android:textColor="#606065"
+            	android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <com.lgy.view.TextViewBackground
+            android:id="@+id/handwrite_return_btn"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="换行"
+            android:textColor="#606065"
+            android:textSize="14sp" />
+        
+        <com.lgy.view.TextViewBackground
+            android:id="@+id/handwrite_space_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:text="空格"
+            android:textColor="#606065"
+            android:textSize="14sp" />
+        
+        <com.lgy.view.TextViewBackground
+            android:id="@+id/handwrite_delete_all_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:text="清空"
+            android:textColor="#606065"
+            android:textSize="14sp" />
+        
+        <com.lgy.view.TextViewBackground
+            android:id="@+id/handwrite_delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:text="撤销"
+            android:textColor="#606065"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>
