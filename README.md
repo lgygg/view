@@ -1,5 +1,3 @@
-# view
-
 # MessengerHelper
 
 ## 作用
@@ -82,6 +80,64 @@ public class MessagerService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         return server.getBinder();
+    }
+}
+```
+
+# ComposeManager
+## 作用
+把手写签字和底图进行合成。
+## 使用
+
+```
+//步骤一：打开签名界面，进行手写签名，生成签名图片
+        composeManager = new ComposeManager(this);
+        composeManager.showWriteBoardPage();
+//步骤二：设置底图，通过拖动签名图片，把签名摆放到正确位置
+        composeManager.paintFinish();
+//步骤三：合成图片，导出合成图
+        composeManager.export(Environment.getExternalStorageDirectory().getAbsolutePath()+"/final.png");
+```
+
+具体例子：
+
+```
+public class TestImageActivity extends AppCompatActivity {
+
+    ImageView close;
+    ComposeManager composeManager;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        composeManager = new ComposeManager(this);
+        composeManager.showWriteBoardPage();
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath()+"/DCIM/Camera/";
+        String backgroundPath = path+"background.jpg";
+        composeManager.setBackgroundPath(backgroundPath);
+        setContentView(R.layout.activity_test_image2);//activity_test_image2就是一个简单的FrameLayout
+        ViewGroup viewGroup = findViewById(R.id.body);
+        viewGroup.addView(composeManager.getView(),ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+
+        close = new ImageView(this);
+        close.setImageResource(R.drawable.ic_launcher_background);
+        viewGroup.addView(close,100,100);
+        close.setOnClickListener(v -> {
+            composeManager.paintFinish();
+
+            Button button  = new Button(composeManager.getView().getContext());
+            button.setText("导出");
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    composeManager.export(Environment.getExternalStorageDirectory().getAbsolutePath()+"/final.png");
+                }
+            });
+            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,FrameLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.gravity = Gravity.RIGHT;
+            composeManager.getView().addView(button,layoutParams);
+        });
+
+        ActivityCompat.requestPermissions(TestImageActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE},101);
     }
 }
 ```
